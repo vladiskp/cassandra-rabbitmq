@@ -31,14 +31,14 @@ public class RabbitMQConfig {
         return new RabbitAdmin(connectionFactory());
     }
 
-    @Bean("template")
+    @Bean
     public RabbitTemplate rabbitTemplate() {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory());
         rabbitTemplate.setExchange(exchange);
         return rabbitTemplate;
     }
 
-    @Bean(name = "rabbitListenerContainerFactory")
+    @Bean
     public SimpleRabbitListenerContainerFactory listenerFactory() {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory());

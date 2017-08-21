@@ -4,6 +4,8 @@ import main.com.intexsoft.test_web_mvc.service.QueueWriter;
 import main.com.intexsoft.test_web_mvc.service.UserService;
 import main.com.intexsoft.test_web_mvc.service.impl.QueueWriterImpl;
 import main.com.intexsoft.test_web_mvc.service.impl.UserServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,7 @@ public class ApplicationController {
     private ApplicationContext context = new AnnotationConfigApplicationContext("main.com.intexsoft.test_web_mvc.config");
     private UserService userService = context.getBean(UserServiceImpl.class);
     private QueueWriter queueWriter = context.getBean(QueueWriterImpl.class);
+    private final Logger logger = LoggerFactory.getLogger(ApplicationController.class);
 
     @RequestMapping(value = "/write", method = RequestMethod.GET)
     public String write() throws InterruptedException {

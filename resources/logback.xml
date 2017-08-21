@@ -36,11 +36,11 @@
         </filter>
     </appender>
 
-    <logger name="main.com.intexsoft.test_web_mvc.test_run" level="ERROR">
+    <logger name="main.com.intexsoft.test_web_mvc" level="ERROR">
         <appender-ref ref="FILE_ERROR"/>
     </logger>
 
-    <logger name="main.com.intexsoft.test_web_mvc.test_run" level="ALL">
+    <logger name="main.com.intexsoft.test_web_mvc" level="ALL">
         <appender-ref ref="FILE_ALL"/>
     </logger>
 

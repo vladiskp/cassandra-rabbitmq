@@ -2,9 +2,11 @@ package main.com.intexsoft.test_web_mvc.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import main.com.intexsoft.test_web_mvc.entity.User;
+import main.com.intexsoft.test_web_mvc.entity.Subscriber;
 import main.com.intexsoft.test_web_mvc.service.QueueWriter;
 import main.com.intexsoft.test_web_mvc.service.UserBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Service;
 public class QueueWriterImpl implements QueueWriter {
 
     private ObjectMapper mapper = new ObjectMapper();
+    private final Logger logger = LoggerFactory.getLogger(QueueWriterImpl.class);
 
     @Value("${rabbitmq.messagesExchange}")
     private String exchange;
@@ -34,13 +37,16 @@ public class QueueWriterImpl implements QueueWriter {
     @Override
     public void writeMessage() {
         try {
-            template.convertAndSend(exchange, routingKey, toJSON(userBuilder.build()));
+            logger.info("Prepare to write message in RabbitMQ queue.");
+            Subscriber subscriber = userBuilder.build();
+            template.convertAndSend(exchange, routingKey, toJSON(subscriber));
+            logger.info("Message (" + subscriber.toString() + ") was written in RabbitMQ queue.");
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
-    private String toJSON(User user) throws JsonProcessingException {
-        return mapper.writeValueAsString(user);
+    private String toJSON(Subscriber subscriber) throws JsonProcessingException {
+        return mapper.writeValueAsString(subscriber);
     }
 }

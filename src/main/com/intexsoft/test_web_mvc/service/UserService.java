@@ -1,13 +1,13 @@
 package main.com.intexsoft.test_web_mvc.service;
 
-import main.com.intexsoft.test_web_mvc.entity.User;
+import main.com.intexsoft.test_web_mvc.entity.Subscriber;
 
 import java.util.List;
 
 public interface UserService {
-    void add(User user);
+    void add(Subscriber subscriber);
 
-    List<User> findAll();
+    List<Subscriber> findAll();
 
     void deleteById(int id);
 

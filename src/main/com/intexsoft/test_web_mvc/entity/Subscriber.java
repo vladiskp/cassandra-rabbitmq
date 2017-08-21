@@ -5,7 +5,7 @@ import org.springframework.data.cassandra.mapping.Table;
 import org.springframework.data.cassandra.mapping.Column;
 
 @Table(value="Test_User")
-public class User {
+public class Subscriber {
 
     @PrimaryKey("id")
     private int id;
@@ -13,9 +13,9 @@ public class User {
     @Column("login")
     private String login;
 
-    public User() {}
+    public Subscriber() {}
 
-    public User(int id, String login) {
+    public Subscriber(int id, String login) {
         this.id = id;
         this.login = login;
     }
@@ -34,5 +34,13 @@ public class User {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    @Override
+    public String toString() {
+        return "Subscriber{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                '}';
     }
 }

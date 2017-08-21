@@ -11,6 +11,6 @@
     <title>New User</title>
 </head>
 <body>
-    <h1>New user was created.</h1>
+    <h1>New subscriber was created.</h1>
 </body>
 </html>

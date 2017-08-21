@@ -13,10 +13,10 @@
         <th>Login</th>
     </tr>
 
-    <c:forEach var="user" items="${users}">
+    <c:forEach var="subscriber" items="${users}">
         <tr>
-            <td>${user.id}</td>
-            <td>${user.login}</td>
+            <td>${subscriber.id}</td>
+            <td>${subscriber.login}</td>
         </tr>
     </c:forEach>
 </table>

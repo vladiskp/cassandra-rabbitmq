@@ -31,9 +31,18 @@ public class CallRecord {
 
     @Column
     @Getter @Setter
-    private long price;
+    private double price;
 
     @Column
     @Getter @Setter
-    private String type;
+    private boolean type;
+
+    public CallRecord(int id, long duration, long startTime, long endTime, double price, boolean type) {
+        this.id = id;
+        this.duration = duration;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.price = price;
+        this.type = type;
+    }
 }

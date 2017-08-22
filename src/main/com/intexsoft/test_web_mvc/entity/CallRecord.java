@@ -1,5 +1,6 @@
 package main.com.intexsoft.test_web_mvc.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,6 +10,7 @@ import org.springframework.data.cassandra.mapping.Table;
 
 @Table(value = "Test_Call_Record")
 @ToString
+@Builder
 public class CallRecord {
 
     @PrimaryKey

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PhoneOperator {
-    private static Map<String, PhoneOperatorInfo> phoneOperators;
+    public static Map<String, PhoneOperatorInfo> phoneOperators;
 
     static {
         phoneOperators = new HashMap<>(4);

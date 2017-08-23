@@ -37,6 +37,8 @@ public class CallRecord {
     @Getter @Setter
     private boolean type;
 
+    public CallRecord(){}
+
     public CallRecord(int id, long duration, long startTime, long endTime, double price, boolean type) {
         this.id = id;
         this.duration = duration;

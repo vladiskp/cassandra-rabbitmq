@@ -33,7 +33,7 @@ public class CallRecordBuilderImpl implements CallRecordBuilder {
         startTime = System.currentTimeMillis();
         endTime = startTime + duration;
         type = new Random().nextBoolean();
-        price = callPriceCalculator.calculatePriceForOneCall(type, duration);
+        price = callPriceCalculator.calculateCallPrice(type, duration);
 
         return new CallRecord(id, duration, startTime, endTime, price, type);
     }

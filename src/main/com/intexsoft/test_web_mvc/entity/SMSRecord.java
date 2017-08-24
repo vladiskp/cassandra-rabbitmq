@@ -17,6 +17,10 @@ public class SMSRecord {
 
     @Column
     @Getter @Setter
+    private long subscriberId;
+
+    @Column
+    @Getter @Setter
     private int characterQuantity;
 
     @Column
@@ -33,8 +37,9 @@ public class SMSRecord {
 
     public SMSRecord() {}
 
-    public SMSRecord(long id, int characterQuantity, boolean type, double price, long sendTime) {
+    public SMSRecord(long id, long subscriberId, int characterQuantity, boolean type, double price, long sendTime) {
         this.id = id;
+        this.subscriberId = subscriberId;
         this.characterQuantity = characterQuantity;
         this.type = type;
         this.price = price;

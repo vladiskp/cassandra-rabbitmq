@@ -3,13 +3,13 @@ package main.com.intexsoft.test_web_mvc.entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.cassandra.mapping.Column;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
+import org.springframework.data.cassandra.mapping.Column;
 
-@Table(value = "Test_Call_Record")
+@Table(value = "Test_SMS_Record")
 @ToString
-public class CallRecord {
+public class SMSRecord {
 
     @PrimaryKey
     @Getter @Setter
@@ -21,15 +21,11 @@ public class CallRecord {
 
     @Column
     @Getter @Setter
-    private long duration;
+    private int characterQuantity;
 
     @Column
     @Getter @Setter
-    private long startTime;
-
-    @Column
-    @Getter @Setter
-    private long endTime;
+    private boolean type;
 
     @Column
     @Getter @Setter
@@ -37,17 +33,16 @@ public class CallRecord {
 
     @Column
     @Getter @Setter
-    private boolean type;
+    private long sendTime;
 
-    public CallRecord(){}
+    public SMSRecord() {}
 
-    public CallRecord(long id, long subscriberId, long duration, long startTime, long endTime, double price, boolean type) {
+    public SMSRecord(long id, long subscriberId, int characterQuantity, boolean type, double price, long sendTime) {
         this.id = id;
         this.subscriberId = subscriberId;
-        this.duration = duration;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.price = price;
+        this.characterQuantity = characterQuantity;
         this.type = type;
+        this.price = price;
+        this.sendTime = sendTime;
     }
 }

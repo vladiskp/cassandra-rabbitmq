@@ -17,7 +17,7 @@ public class CallPriceCalculatorImpl implements CallPriceCalculator {
     private double rateExternal;
 
     @Override
-    public double calculatePriceForOneCall(boolean type, long duration) {
+    public double calculateCallPrice(boolean type, long duration) {
         return duration / 1000 * (type ? rateInternal : rateExternal);
     }
 }

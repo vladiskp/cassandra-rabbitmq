@@ -1,11 +1,10 @@
 package main.com.intexsoft.test_web_mvc.repository;
 
-import main.com.intexsoft.test_web_mvc.entity.Subscriber;
+import main.com.intexsoft.test_web_mvc.entity.SMSRecord;
 import org.springframework.data.cassandra.repository.CassandraRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CassandraRepository<Subscriber> {
+public interface SMSRecordRepository extends CassandraRepository<SMSRecord>{
 
-    void deleteById(int id);
 }

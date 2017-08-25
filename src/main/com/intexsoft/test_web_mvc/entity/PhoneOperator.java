@@ -1,15 +1,19 @@
 package main.com.intexsoft.test_web_mvc.entity;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 
 import java.util.HashMap;
 import java.util.Map;
 
+// TODO write in cassandra
+
 @PropertySource(value = "classpath:rates.properties")
 public class PhoneOperator {
 
-    static Map<String, PhoneOperatorInfo> phoneOperator;
+    @Getter
+    private static Map<String, PhoneOperatorInfo> phoneOperator;
 
     @Value("${mtc.rate.internal}")
     private static double mtcRateInternal;

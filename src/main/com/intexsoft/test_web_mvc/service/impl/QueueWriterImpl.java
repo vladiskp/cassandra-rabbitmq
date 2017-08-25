@@ -38,7 +38,8 @@ public class QueueWriterImpl implements QueueWriter {
     public void writeMessage() {
         try {
             logger.info("Prepare to write message in RabbitMQ queue.");
-            CallRecord callRecord = callRecordBuilder.build();
+//            CallRecord callRecord = callRecordBuilder.build();
+            CallRecord callRecord = new CallRecord(1, 111, 111, 111, 111, 1, true);
             template.convertAndSend(exchange, routingKey, toJSON(callRecord));
         } catch (JsonProcessingException e) {
             logger.error(e.getMessage());

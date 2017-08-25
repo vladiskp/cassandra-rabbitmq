@@ -5,7 +5,7 @@ import org.springframework.data.cassandra.repository.CassandraRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CassandraRepository<Subscriber> {
+public interface SubscriberRepository extends CassandraRepository<Subscriber> {
 
     void deleteById(int id);
 

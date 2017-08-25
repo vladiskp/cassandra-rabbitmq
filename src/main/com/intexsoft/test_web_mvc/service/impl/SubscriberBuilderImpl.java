@@ -14,6 +14,6 @@ public class SubscriberBuilderImpl implements SubscriberBuilder {
     @Override
     public Subscriber build() {
         ++counter;
-        return new Subscriber(id + counter, login + counter);
+        return new Subscriber();
     }
 }

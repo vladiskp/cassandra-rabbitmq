@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PhoneNumberRepository extends CassandraRepository<PhoneNumber> {
 
+    public PhoneNumber findBySubscriberId(long subscriberId);
+
 }

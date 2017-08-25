@@ -11,8 +11,20 @@ public class PhoneNumber {
     private String number;
 
     @Getter @Setter
+    private long subscriberId;
+
+    @Getter @Setter
     private double balance;
 
     @Getter @Setter
-    private PhoneOperator phoneOperator;
+    private String phoneOperator;
+
+    public PhoneNumber() {}
+
+    public PhoneNumber(String number, long subscriberId, double balance, String phoneOperator) {
+        this.number = number;
+        this.subscriberId = subscriberId;
+        this.balance = balance;
+        this.phoneOperator = phoneOperator;
+    }
 }

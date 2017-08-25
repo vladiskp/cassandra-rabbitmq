@@ -15,16 +15,20 @@ public class Subscriber {
 
     @PrimaryKey("id")
     @Getter @Setter
-    private int id;
+    private long id;
 
     @Column("login")
     @Getter @Setter
     private String login;
 
+    @Getter @Setter
+    private String phoneNumber;
+
     public Subscriber() {}
 
-    public Subscriber(int id, String login) {
+    public Subscriber(long id, String login, String phoneNumber) {
         this.id = id;
         this.login = login;
+        this.phoneNumber = phoneNumber;
     }
 }

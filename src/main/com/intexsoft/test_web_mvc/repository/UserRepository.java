@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends CassandraRepository<Subscriber> {
 
     void deleteById(int id);
+
+    Subscriber findById(long id);
 }

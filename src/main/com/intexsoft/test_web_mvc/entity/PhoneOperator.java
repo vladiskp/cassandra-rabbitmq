@@ -7,8 +7,6 @@ import org.springframework.context.annotation.PropertySource;
 import java.util.HashMap;
 import java.util.Map;
 
-// TODO write in cassandra
-
 @PropertySource(value = "classpath:rates.properties")
 public class PhoneOperator {
 

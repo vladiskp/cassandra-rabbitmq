@@ -7,6 +7,7 @@ import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
 import org.springframework.data.cassandra.mapping.Column;
 
+// TODO SendStatus
 @Table(value = "Test_SMS_Record")
 @ToString
 public class SMSRecord {
@@ -33,16 +34,26 @@ public class SMSRecord {
 
     @Column
     @Getter @Setter
+    private String inNumber;
+
+    @Column
+    @Getter @Setter
+    private String outNumber;
+
+    @Column
+    @Getter @Setter
     private long sendTime;
 
     public SMSRecord() {}
 
-    public SMSRecord(long id, long subscriberId, int characterQuantity, boolean type, double price, long sendTime) {
+    public SMSRecord(long id, long subscriberId, int characterQuantity, boolean type, double price, String inNumber, String outNumber, long sendTime) {
         this.id = id;
         this.subscriberId = subscriberId;
         this.characterQuantity = characterQuantity;
         this.type = type;
         this.price = price;
+        this.inNumber = inNumber;
+        this.outNumber = outNumber;
         this.sendTime = sendTime;
     }
 }

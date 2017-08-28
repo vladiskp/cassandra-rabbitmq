@@ -13,35 +13,71 @@ public class PhoneOperator {
     @Getter
     private static Map<String, PhoneOperatorInfo> phoneOperator;
 
-    @Value("${mtc.rate.internal}")
-    private static double mtcRateInternal;
+    @Value("${mtc.location.rate.internal}")
+    private static double mtcLocationRateInternal;
 
-    @Value("${mtc.rate.external}")
-    private static double mtcRateExternal;
+    @Value("${mtc.location.rate.external}")
+    private static double mtcLocationRateExternal;
 
-    @Value("${velcome.rate.internal}")
-    private static double velcomeRateInternal;
+    @Value("${mtc.operator.rate.internal}")
+    private static double mtcOperatorRateInternal;
 
-    @Value("${velcome.rate.external}")
-    private static double velcomeRateExternal;
+    @Value("${mtc.operator.rate.external}")
+    private static double mtcOperatorRateExternal;
 
-    @Value("${beeline.rate.internal}")
-    private static double beelineRateInternal;
+    @Value("${velcome.location.rate.internal}")
+    private static double velcomeLocationRateInternal;
 
-    @Value("${beeline.rate.external}")
-    private static double beelineRateExternal;
+    @Value("${velcome.location.rate.external}")
+    private static double velcomeLocationRateExternal;
 
-    @Value("${life.rate.internal}")
-    private static double lifeRateInternal;
+    @Value("${velcome.operator.rate.internal}")
+    private static double velcomeOperatorRateInternal;
 
-    @Value("${life.rate.external}")
-    private static double lifeRateExternal;
+    @Value("${velcome.operator.rate.external}")
+    private static double velcomeOperatorRateExternal;
+
+    @Value("${beeline.location.rate.internal}")
+    private static double beelineLocationRateInternal;
+
+    @Value("${beeline.location.rate.external}")
+    private static double beelineLocationRateExternal;
+
+    @Value("${beeline.operator.rate.internal}")
+    private static double beelineOperatorRateInternal;
+
+    @Value("${beeline.operator.rate.external}")
+    private static double beelineOperatorRateExternal;
+
+    @Value("${life.location.rate.internal}")
+    private static double lifeLocationRateInternal;
+
+    @Value("${life.location.rate.external}")
+    private static double lifeLocationRateExternal;
+
+    @Value("${life.operator.rate.internal}")
+    private static double lifeOperatorRateInternal;
+
+    @Value("${life.operator.rate.external}")
+    private static double lifeOperatorRateExternal;
 
     static {
         phoneOperator = new HashMap<>();
-        phoneOperator.put("MTC", new PhoneOperatorInfo(mtcRateInternal, mtcRateExternal));
-        phoneOperator.put("VELCOME", new PhoneOperatorInfo(velcomeRateInternal, velcomeRateExternal));
-        phoneOperator.put("BEELINE", new PhoneOperatorInfo(beelineRateInternal, beelineRateExternal));
-        phoneOperator.put("LIFE", new PhoneOperatorInfo(lifeRateExternal, lifeRateExternal));
+        phoneOperator.put("MTC", new PhoneOperatorInfo(mtcLocationRateInternal,
+                                                       mtcLocationRateExternal,
+                                                       mtcOperatorRateInternal,
+                                                       mtcOperatorRateExternal));
+        phoneOperator.put("VELCOME", new PhoneOperatorInfo(velcomeLocationRateInternal,
+                                                           velcomeLocationRateExternal,
+                                                           velcomeOperatorRateInternal,
+                                                           velcomeOperatorRateExternal));
+        phoneOperator.put("BEELINE", new PhoneOperatorInfo(beelineLocationRateInternal,
+                                                           beelineLocationRateExternal,
+                                                           beelineOperatorRateInternal,
+                                                           beelineOperatorRateExternal));
+        phoneOperator.put("LIFE", new PhoneOperatorInfo(lifeLocationRateInternal,
+                                                        lifeLocationRateExternal,
+                                                        lifeOperatorRateInternal,
+                                                        lifeOperatorRateExternal));
     }
 }

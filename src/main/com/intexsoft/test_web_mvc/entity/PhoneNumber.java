@@ -13,7 +13,7 @@ public class PhoneNumber {
 
     @PrimaryKey
     @Getter @Setter
-    private String number;
+    private long id;
 
     @Column
     @Getter @Setter
@@ -21,18 +21,23 @@ public class PhoneNumber {
 
     @Column
     @Getter @Setter
-    private double balance;
+    private String number;
 
     @Column
     @Getter @Setter
     private String phoneOperator;
 
+    @Column
+    @Getter @Setter
+    private double balance;
+
     public PhoneNumber() {}
 
-    public PhoneNumber(String number, long subscriberId, double balance, String phoneOperator) {
-        this.number = number;
+    public PhoneNumber(long id, long subscriberId, String number, String phoneOperator, double balance) {
+        this.id = id;
         this.subscriberId = subscriberId;
-        this.balance = balance;
+        this.number = number;
         this.phoneOperator = phoneOperator;
+        this.balance = balance;
     }
 }

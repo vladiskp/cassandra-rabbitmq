@@ -11,7 +11,23 @@ import org.springframework.stereotype.Service;
 public class CallPriceCalculatorImpl implements CallPriceCalculator {
 
     @Override
-    public double calculateCallPrice(boolean outType, boolean inType, String outPhoneOperator, String inPhoneOperator, long duration) {
-        return 1;
+    public double calculateCallPrice(int outCountryCode, int inCountryCode, String outPhoneOperator, String inPhoneOperator, long duration) {
+        double locationRate;
+        double operatorRate;
+
+        if(outCountryCode == inCountryCode) {
+            locationRate = PhoneOperator.getPhoneOperator().get(outPhoneOperator).getLocationRateInternal();
+        } else {
+            locationRate = PhoneOperator.getPhoneOperator().get(outPhoneOperator).getLocationRateExternal();
+        }
+
+        if(outPhoneOperator.equals(inPhoneOperator)) {
+            operatorRate = PhoneOperator.getPhoneOperator().get(outPhoneOperator).getOperatorRateInternal();
+        } else {
+            operatorRate = PhoneOperator.getPhoneOperator().get(outPhoneOperator).getOperatorRateExternal();
+        }
+
+
+        return duration / 1000 * locationRate * operatorRate;
     }
 }

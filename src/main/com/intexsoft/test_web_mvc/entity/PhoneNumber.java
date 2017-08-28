@@ -25,6 +25,10 @@ public class PhoneNumber {
 
     @Column
     @Getter @Setter
+    private int countryCode;
+
+    @Column
+    @Getter @Setter
     private String phoneOperator;
 
     @Column
@@ -33,10 +37,11 @@ public class PhoneNumber {
 
     public PhoneNumber() {}
 
-    public PhoneNumber(long id, long subscriberId, String number, String phoneOperator, double balance) {
+    public PhoneNumber(long id, long subscriberId, String number, int countryCode, String phoneOperator, double balance) {
         this.id = id;
         this.subscriberId = subscriberId;
         this.number = number;
+        this.countryCode = countryCode;
         this.phoneOperator = phoneOperator;
         this.balance = balance;
     }

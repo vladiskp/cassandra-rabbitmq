@@ -3,7 +3,6 @@ package main.com.intexsoft.test_web_mvc.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import main.com.intexsoft.test_web_mvc.entity.CallRecord;
-import main.com.intexsoft.test_web_mvc.service.CallRecordBuilder;
 import main.com.intexsoft.test_web_mvc.service.QueueWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

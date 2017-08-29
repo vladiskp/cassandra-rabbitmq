@@ -1,9 +1,10 @@
 package main.com.intexsoft.test_web_mvc.entity;
 
+import com.datastax.driver.core.DataType.Name;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.cassandra.mapping.Column;
+import org.springframework.data.cassandra.mapping.CassandraType;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
 
@@ -16,13 +17,12 @@ public class Subscriber {
     @Getter @Setter
     private long id;
 
-    @Column
-    @Getter @Setter
-    private String phoneNumber;
+    @CassandraType(userTypeName = "phone_number", type = Name.UDT)
+    private PhoneNumber phoneNumber;
 
     public Subscriber() {}
 
-    public Subscriber(long id, String phoneNumber) {
+    public Subscriber(long id, PhoneNumber phoneNumber) {
         this.id = id;
         this.phoneNumber = phoneNumber;
     }

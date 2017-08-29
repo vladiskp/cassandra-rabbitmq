@@ -1,5 +1,6 @@
 package main.com.intexsoft.test_web_mvc.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,6 +11,7 @@ import org.springframework.data.cassandra.mapping.Column;
 // TODO SendStatus
 @Table(value = "Test_SMS_Record")
 @ToString
+@Builder
 public class SMSRecord {
 
     @PrimaryKey
@@ -22,11 +24,11 @@ public class SMSRecord {
 
     @Column
     @Getter @Setter
-    private int characterQuantity;
+    private String message;
 
     @Column
     @Getter @Setter
-    private boolean type;
+    private int characterQuantity;
 
     @Column
     @Getter @Setter
@@ -34,7 +36,15 @@ public class SMSRecord {
 
     @Column
     @Getter @Setter
-    private String inNumber;
+    private long sendTime;
+
+    @Column
+    @Getter @Setter
+    private boolean isInternal;
+
+    @Column
+    @Getter @Setter
+    private boolean isIncoming;
 
     @Column
     @Getter @Setter
@@ -42,18 +52,20 @@ public class SMSRecord {
 
     @Column
     @Getter @Setter
-    private long sendTime;
+    private String inNumber;
 
     public SMSRecord() {}
 
-    public SMSRecord(long id, long subscriberId, int characterQuantity, boolean type, double price, String inNumber, String outNumber, long sendTime) {
+    public SMSRecord(long id, long subscriberId, String message, int characterQuantity, double price, long sendTime, boolean isInternal, boolean isIncoming, String outNumber, String inNumber) {
         this.id = id;
         this.subscriberId = subscriberId;
+        this.message = message;
         this.characterQuantity = characterQuantity;
-        this.type = type;
         this.price = price;
-        this.inNumber = inNumber;
-        this.outNumber = outNumber;
         this.sendTime = sendTime;
+        this.isInternal = isInternal;
+        this.isIncoming = isIncoming;
+        this.outNumber = outNumber;
+        this.inNumber = inNumber;
     }
 }

@@ -43,19 +43,15 @@ public class CallRecord {
 
     @Column
     @Getter @Setter
-    private boolean isIncoming;
+    private String outPhoneNumber;
 
     @Column
     @Getter @Setter
-    private String outNumber;
-
-    @Column
-    @Getter @Setter
-    private String inNumber;
+    private String inPhoneNumber;
 
     public CallRecord(){}
 
-    public CallRecord(long id, long subscriberId, long duration, long startTime, long endTime, double price, boolean isInternal, boolean isIncoming, String outNumber, String inNumber) {
+    public CallRecord(long id, long subscriberId, long duration, long startTime, long endTime, double price, boolean isInternal, String outPhoneNumber, String inPhoneNumber) {
         this.id = id;
         this.subscriberId = subscriberId;
         this.duration = duration;
@@ -63,8 +59,7 @@ public class CallRecord {
         this.endTime = endTime;
         this.price = price;
         this.isInternal = isInternal;
-        this.isIncoming = isIncoming;
-        this.outNumber = outNumber;
-        this.inNumber = inNumber;
+        this.outPhoneNumber = outPhoneNumber;
+        this.inPhoneNumber = inPhoneNumber;
     }
 }

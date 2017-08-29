@@ -1,47 +1,28 @@
 package main.com.intexsoft.test_web_mvc.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.datastax.driver.core.DataType.Name;
 import lombok.ToString;
-import org.springframework.data.cassandra.mapping.PrimaryKey;
-import org.springframework.data.cassandra.mapping.Table;
-import org.springframework.data.cassandra.mapping.Column;
+import org.springframework.data.cassandra.mapping.CassandraType;
+import org.springframework.data.cassandra.mapping.UserDefinedType;
 
-@Table(value = "Test_Phone_Number")
+
+@UserDefinedType("phone_number")
 @ToString
 public class PhoneNumber {
 
-    @PrimaryKey
-    @Getter @Setter
-    private long id;
-
-    @Column
-    @Getter @Setter
-    private long subscriberId;
-
-    @Column
-    @Getter @Setter
+    @CassandraType(type = Name.TEXT)
     private String number;
 
-    @Column
-    @Getter @Setter
-    private int countryCode;
-
-    @Column
-    @Getter @Setter
+    @CassandraType(type = Name.TEXT)
     private String phoneOperator;
 
-    @Column
-    @Getter @Setter
+    @CassandraType(type = Name.DOUBLE)
     private double balance;
 
     public PhoneNumber() {}
 
-    public PhoneNumber(long id, long subscriberId, String number, int countryCode, String phoneOperator, double balance) {
-        this.id = id;
-        this.subscriberId = subscriberId;
+    public PhoneNumber(String number, String phoneOperator, double balance) {
         this.number = number;
-        this.countryCode = countryCode;
         this.phoneOperator = phoneOperator;
         this.balance = balance;
     }

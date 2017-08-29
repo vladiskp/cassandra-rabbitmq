@@ -18,6 +18,7 @@ public class Subscriber {
     private long id;
 
     @CassandraType(userTypeName = "phone_number", type = Name.UDT)
+    @Getter @Setter
     private PhoneNumber phoneNumber;
 
     public Subscriber() {}

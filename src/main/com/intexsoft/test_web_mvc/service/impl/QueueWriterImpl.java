@@ -30,19 +30,16 @@ public class QueueWriterImpl implements QueueWriter {
     @Autowired
     private RabbitTemplate template;
 
-    @Autowired
-    private CallRecordBuilder callRecordBuilder;
-
     @Override
     public void writeMessage() {
-        try {
-            logger.info("Prepare to write message in RabbitMQ queue.");
+//        try {
+//            logger.info("Prepare to write message in RabbitMQ queue.");
 //            CallRecord callRecord = callRecordBuilder.build();
-            CallRecord callRecord = new CallRecord(1, 111, 111, 111, 111, 1, true);
-            template.convertAndSend(exchange, routingKey, toJSON(callRecord));
-        } catch (JsonProcessingException e) {
-            logger.error(e.getMessage());
-        }
+//            CallRecord callRecord = new CallRecord(1, 111, 111, 111, 111, 1, true);
+//            template.convertAndSend(exchange, routingKey, toJSON(callRecord));
+//        } catch (JsonProcessingException e) {
+//            logger.error(e.getMessage());
+//        }
     }
 
     private String toJSON(CallRecord callRecord) throws JsonProcessingException {

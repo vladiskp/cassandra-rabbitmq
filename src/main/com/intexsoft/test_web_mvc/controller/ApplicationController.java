@@ -28,21 +28,21 @@ public class ApplicationController {
         return "redirect:users";
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @RequestMapping(value = "/subscribers", method = RequestMethod.GET)
     public String showAll(Model model) {
-        model.addAttribute("users", subscriberService.findAll());
-        return "users";
+        model.addAttribute("subscribers", subscriberService.findAll());
+        return "subscribers";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteById(@PathVariable("id") int id) {
         subscriberService.deleteById(id);
-        return "users";
+        return "subscribers";
     }
 
     @RequestMapping(value = "/deleteAll", method = RequestMethod.GET)
     public String deleteAll() {
         subscriberService.deleteAll();
-        return "users";
+        return "subscribers";
     }
 }

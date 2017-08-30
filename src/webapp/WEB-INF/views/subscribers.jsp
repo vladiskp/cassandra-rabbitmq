@@ -7,18 +7,18 @@
     <title>User List</title>
 </head>
 <body>
-<table class="table table-striped">
-    <tr>
-        <th>ID</th>
-        <th>Login</th>
-    </tr>
-
-    <c:forEach var="subscriber" items="${users}">
+    <table class="table table-striped">
         <tr>
-            <td>${subscriber.id}</td>
-            <td>${subscriber.login}</td>
+            <th>ID</th>
+            <th>Login</th>
         </tr>
-    </c:forEach>
-</table>
+
+        <c:forEach var="subscriber" items="${users}">
+            <tr>
+                <td>${subscriber.id}</td>
+                <td>${subscriber.login}</td>
+            </tr>
+        </c:forEach>
+    </table>
 </body>
 </html>

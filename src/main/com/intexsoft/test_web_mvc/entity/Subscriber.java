@@ -7,9 +7,10 @@ import lombok.ToString;
 import org.springframework.data.cassandra.mapping.CassandraType;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
+import org.springframework.data.cassandra.mapping.Column;
 
 // TODO Personal Data
-@Table(value="Test_User")
+@Table(value="subscriber")
 @ToString
 public class Subscriber {
 
@@ -17,11 +18,16 @@ public class Subscriber {
     @Getter @Setter
     private long id;
 
-    @CassandraType(userTypeName = "phone_number", type = Name.UDT)
+    @Column("phone")
+    @CassandraType(userTypeName = "phone", type = Name.UDT)
     @Getter @Setter
     private PhoneNumber phoneNumber;
 
     public Subscriber() {}
+
+    public Subscriber(long id) {
+        this.id = id;
+    }
 
     public Subscriber(long id, PhoneNumber phoneNumber) {
         this.id = id;

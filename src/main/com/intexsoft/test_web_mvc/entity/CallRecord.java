@@ -8,7 +8,7 @@ import org.springframework.data.cassandra.mapping.Column;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
 
-@Table(value = "Test_Call_Record")
+@Table(value = "call_record")
 @ToString
 @Builder
 public class CallRecord {
@@ -17,7 +17,7 @@ public class CallRecord {
     @Getter @Setter
     private long id;
 
-    @Column
+    @Column("subscriber_id")
     @Getter @Setter
     private long subscriberId;
 
@@ -25,11 +25,11 @@ public class CallRecord {
     @Getter @Setter
     private long duration;
 
-    @Column
+    @Column("start_time")
     @Getter @Setter
     private long startTime;
 
-    @Column
+    @Column("end_time")
     @Getter @Setter
     private long endTime;
 
@@ -37,15 +37,15 @@ public class CallRecord {
     @Getter @Setter
     private double price;
 
-    @Column
+    @Column("is_internal")
     @Getter @Setter
     private boolean isInternal;
 
-    @Column
+    @Column("out_phone_number")
     @Getter @Setter
     private String outPhoneNumber;
 
-    @Column
+    @Column("in_phone_number")
     @Getter @Setter
     private String inPhoneNumber;
 

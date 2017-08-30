@@ -8,7 +8,7 @@ import org.springframework.data.cassandra.mapping.CassandraType;
 import org.springframework.data.cassandra.mapping.UserDefinedType;
 
 
-@UserDefinedType("phone_number")
+@UserDefinedType("phone")
 @ToString
 public class PhoneNumber {
 
@@ -18,7 +18,7 @@ public class PhoneNumber {
 
     @CassandraType(type = Name.TEXT)
     @Getter @Setter
-    private String phoneOperator;
+    private String operator;
 
     @CassandraType(type = Name.DOUBLE)
     @Getter @Setter
@@ -26,9 +26,9 @@ public class PhoneNumber {
 
     public PhoneNumber() {}
 
-    public PhoneNumber(String number, String phoneOperator, double balance) {
+    public PhoneNumber(String number, String operator, double balance) {
         this.number = number;
-        this.phoneOperator = phoneOperator;
+        this.operator = operator;
         this.balance = balance;
     }
 }

@@ -27,13 +27,14 @@ public class PhoneFeatureImpl implements PhoneFeature {
         long duration = new Random().nextInt(1000000);
         long startTime = System.currentTimeMillis();
         long endTime = startTime + duration;
-        String outPhoneOperator = subscriberRepository.findById(outSubscriberId).getPhoneNumber().getPhoneOperator();
-        String inPhoneOperator = subscriberRepository.findById(inSubscriberId).getPhoneNumber().getPhoneOperator();
+        String outPhoneOperator = subscriberRepository.findById(outSubscriberId).getPhoneNumber().getOperator();
+        String inPhoneOperator = subscriberRepository.findById(inSubscriberId).getPhoneNumber().getOperator();
         double price = callPriceCalculator.calculateCallPrice(outPhoneOperator, inPhoneOperator, duration);
         String outPhoneNumber = subscriberRepository.findById(outSubscriberId).getPhoneNumber().getNumber();
         String inPhoneNumber = subscriberRepository.findById(inSubscriberId).getPhoneNumber().getNumber();
 
-        CallRecord outCallRecord = CallRecord.builder().subscriberId(outSubscriberId)
+        CallRecord callRecord = CallRecord.builder().id(1)
+                                                       .subscriberId(outSubscriberId)
                                                        .duration(duration)
                                                        .startTime(startTime)
                                                        .endTime(endTime)
@@ -43,6 +44,6 @@ public class PhoneFeatureImpl implements PhoneFeature {
                                                        .inPhoneNumber(inPhoneNumber)
                                                        .build();
 
-        callRecordService.add(outCallRecord);
+        callRecordService.add(callRecord);
     }
 }

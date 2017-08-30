@@ -4,19 +4,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-    <title>User List</title>
+    <title>Subscribers</title>
 </head>
 <body>
     <table class="table table-striped">
         <tr>
             <th>ID</th>
-            <th>Login</th>
+            <th>Phone Number</th>
+            <th>Phone Operator</th>
+            <th>Balance</th>
         </tr>
 
-        <c:forEach var="subscriber" items="${users}">
+        <c:forEach var="subscriber" items="${subscribers}">
             <tr>
                 <td>${subscriber.id}</td>
-                <td>${subscriber.login}</td>
+                <td>${subscriber.phoneNumber.number}</td>
+                <td>${subscriber.phoneNumber.operator}</td>
+                <td>${subscriber.phoneNumber.balance}</td>
             </tr>
         </c:forEach>
     </table>

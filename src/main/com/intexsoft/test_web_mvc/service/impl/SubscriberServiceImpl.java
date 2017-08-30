@@ -19,6 +19,8 @@ public class SubscriberServiceImpl implements SubscriberService {
         subscriberRepository.save(subscriber);
     }
 
+    public SubscriberServiceImpl() {}
+
     @Override
     public List<Subscriber> findAll() {
         return (List<Subscriber>) subscriberRepository.findAll();
@@ -33,6 +35,4 @@ public class SubscriberServiceImpl implements SubscriberService {
     public void deleteAll() {
         subscriberRepository.deleteAll();
     }
-
-    public SubscriberServiceImpl() {}
 }

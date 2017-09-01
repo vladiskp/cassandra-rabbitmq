@@ -2,7 +2,7 @@ package main.com.intexsoft.test_web_mvc.service.impl;
 
 import main.com.intexsoft.test_web_mvc.entity.CallRecord;
 import main.com.intexsoft.test_web_mvc.repository.SubscriberRepository;
-import main.com.intexsoft.test_web_mvc.service.CallPriceCalculator;
+import main.com.intexsoft.test_web_mvc.service.PriceCalculator;
 import main.com.intexsoft.test_web_mvc.service.CallRecordService;
 import main.com.intexsoft.test_web_mvc.service.PhoneFeature;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class PhoneFeatureImpl implements PhoneFeature {
     private SubscriberRepository subscriberRepository;
 
     @Autowired
-    CallPriceCalculator callPriceCalculator;
+    PriceCalculator priceCalculator;
 
     @Autowired
     CallRecordService callRecordService;
@@ -29,7 +29,7 @@ public class PhoneFeatureImpl implements PhoneFeature {
         long endTime = startTime + duration;
         String outPhoneOperator = subscriberRepository.findById(outSubscriberId).getPhoneNumber().getOperator();
         String inPhoneOperator = subscriberRepository.findById(inSubscriberId).getPhoneNumber().getOperator();
-        double price = callPriceCalculator.calculateCallPrice(outPhoneOperator, inPhoneOperator, duration);
+        double price = priceCalculator.calculateCallPrice(outPhoneOperator, inPhoneOperator, duration);
         String outPhoneNumber = subscriberRepository.findById(outSubscriberId).getPhoneNumber().getNumber();
         String inPhoneNumber = subscriberRepository.findById(inSubscriberId).getPhoneNumber().getNumber();
 

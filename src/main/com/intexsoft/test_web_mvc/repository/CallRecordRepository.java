@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CallRecordRepository extends CassandraRepository<CallRecord>{
+    void deleteById(long id);
 }

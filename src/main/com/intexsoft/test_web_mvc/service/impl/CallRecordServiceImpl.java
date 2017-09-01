@@ -24,4 +24,14 @@ public class CallRecordServiceImpl implements CallRecordService {
     public List<CallRecord> findAll() {
         return (List<CallRecord>) callRecordRepository.findAll();
     }
+
+    @Override
+    public void deleteById(long id) {
+        callRecordRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteAll() {
+        callRecordRepository.deleteAll();
+    }
 }

@@ -27,7 +27,7 @@ public class SubscriberServiceImpl implements SubscriberService {
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         subscriberRepository.deleteById(id);
     }
 

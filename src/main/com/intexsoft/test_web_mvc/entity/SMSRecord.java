@@ -8,8 +8,7 @@ import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
 import org.springframework.data.cassandra.mapping.Column;
 
-// TODO SendStatus
-@Table(value = "Test_SMS_Record")
+@Table(value = "sms_record")
 @ToString
 @Builder
 public class SMSRecord {
@@ -18,7 +17,7 @@ public class SMSRecord {
     @Getter @Setter
     private long id;
 
-    @Column
+    @Column("subscriber_id")
     @Getter @Setter
     private long subscriberId;
 
@@ -26,7 +25,7 @@ public class SMSRecord {
     @Getter @Setter
     private String message;
 
-    @Column
+    @Column("character_quantity")
     @Getter @Setter
     private int characterQuantity;
 
@@ -34,19 +33,19 @@ public class SMSRecord {
     @Getter @Setter
     private double price;
 
-    @Column
+    @Column("send_time")
     @Getter @Setter
     private long sendTime;
 
-    @Column
+    @Column("is_internal")
     @Getter @Setter
     private boolean isInternal;
 
-    @Column
+    @Column("out_number")
     @Getter @Setter
     private String outNumber;
 
-    @Column
+    @Column("in_number")
     @Getter @Setter
     private String inNumber;
 

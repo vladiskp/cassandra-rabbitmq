@@ -44,10 +44,6 @@ public class SMSRecord {
 
     @Column
     @Getter @Setter
-    private boolean isIncoming;
-
-    @Column
-    @Getter @Setter
     private String outNumber;
 
     @Column
@@ -56,7 +52,7 @@ public class SMSRecord {
 
     public SMSRecord() {}
 
-    public SMSRecord(long id, long subscriberId, String message, int characterQuantity, double price, long sendTime, boolean isInternal, boolean isIncoming, String outNumber, String inNumber) {
+    public SMSRecord(long id, long subscriberId, String message, int characterQuantity, double price, long sendTime, boolean isInternal, String outNumber, String inNumber) {
         this.id = id;
         this.subscriberId = subscriberId;
         this.message = message;
@@ -64,7 +60,6 @@ public class SMSRecord {
         this.price = price;
         this.sendTime = sendTime;
         this.isInternal = isInternal;
-        this.isIncoming = isIncoming;
         this.outNumber = outNumber;
         this.inNumber = inNumber;
     }

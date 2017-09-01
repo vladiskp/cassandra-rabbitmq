@@ -8,4 +8,8 @@ public interface CallRecordService {
     void add(CallRecord callRecord);
 
     List<CallRecord> findAll();
+
+    void deleteById(long id);
+
+    void deleteAll();
 }

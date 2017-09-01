@@ -9,7 +9,7 @@ public interface SubscriberService {
 
     List<Subscriber> findAll();
 
-    void deleteById(int id);
+    void deleteById(long id);
 
     void deleteAll();
 }

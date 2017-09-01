@@ -1,10 +1,12 @@
 package main.com.intexsoft.test_web_mvc.service.impl;
 
 import main.com.intexsoft.test_web_mvc.entity.CallRecord;
+import main.com.intexsoft.test_web_mvc.entity.SMSRecord;
 import main.com.intexsoft.test_web_mvc.repository.SubscriberRepository;
 import main.com.intexsoft.test_web_mvc.service.PriceCalculator;
 import main.com.intexsoft.test_web_mvc.service.CallRecordService;
 import main.com.intexsoft.test_web_mvc.service.PhoneFeature;
+import main.com.intexsoft.test_web_mvc.service.SMSRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,9 @@ public class PhoneFeatureImpl implements PhoneFeature {
 
     @Autowired
     CallRecordService callRecordService;
+
+    @Autowired
+    SMSRecordService smsRecordService;
 
     @Override
     public void makeCall(long outSubscriberId, long inSubscriberId) {
@@ -45,5 +50,26 @@ public class PhoneFeatureImpl implements PhoneFeature {
                                                        .build();
 
         callRecordService.add(callRecord);
+    }
+
+    @Override
+    public void writeSMS(long outSubscriberId, long inSubscriberId, String message) {
+        int characterQuantity = message.length();
+        String outPhoneOperator = subscriberRepository.findById(outSubscriberId).getPhoneNumber().getOperator();
+        String inPhoneOperator = subscriberRepository.findById(inSubscriberId).getPhoneNumber().getOperator();
+        double price = priceCalculator.calculateSMSPrice(outPhoneOperator, inPhoneOperator, message);
+        long sendTime = System.currentTimeMillis();
+
+        SMSRecord smsRecord = SMSRecord.builder().id(1)
+                                                 .subscriberId(outSubscriberId)
+                                                 .message(message)
+                                                 .characterQuantity(characterQuantity)
+                                                 .price(price)
+                                                 .sendTime(sendTime)
+                                                 .isInternal(outPhoneOperator.equals(inPhoneOperator))
+                                                 .outNumber(outPhoneOperator)
+                                                 .inNumber(inPhoneOperator)
+                                                 .build();
+        smsRecordService.add(smsRecord);
     }
 }
